@@ -33,7 +33,60 @@
     <p>A comunicação entre os continentes acontece através de cabos submarinos. Já a comunicação interna acontece das mais diversas formas: via satélite, balão de comunicação, transmissão via antena, cabeamento aéreo ou subterrâneo, etc.</p>
     <h2>Como a Internet funciona atualmente</h2>
     <p>Nesse momento, podemos nos perguntar: ok, entendi como a internet surgiu, mas como funciona a comunicação entre esses pontos de acesso? Como eu transfiro dados de um ponto "A" até um ponto "B"</p>
-    <p>Para responder essa pergunta, é importante definir dois conceitos muito importantes: Cliente e Servidor.</p>
+    <h3>Modelo Cliente-Servidor</h3>
+    <p>Para responder essa pergunta, é importante definir dois conceitos muito importantes: Cliente e Servidor.Geralmente os clientes e servidores se comunicam através de uma rede de computadores, e localizam-se em computadores distintos, mas tanto o cliente quanto o servidor podem residir na mesma máquina. </p>
+    <p>Um servidor é um host que está executando um ou mais serviços ou programas que compartilham recursos com os clientes. Um cliente não compartilha qualquer de seus recursos, mas solicita um conteúdo ou função do servidor. Os clientes iniciam sessões de comunicação com os servidores que aguardam requisições de entrada.</p>
+    <p>O modelo cliente-servidor (client/server model) foi desenvolvido na Xerox PARC durante os anos 70. Este modelo é actualmente o predominante nas redes informáticas. Email, a World Wide Web e redes de impressão são exemplos comuns deste modelo.</p>
+    <p>Principais características do cliente:</p>
+    <ul>
+        <li>Inicia pedidos para servidores;</li>
+        <li>Espera por respostas;</li>
+        <li>Recebe respostas;</li>
+        <li>Conecta-se a um pequeno número de servidores de uma só vez;</li>
+        <li>Normalmente interage diretamente com os servidores através de seu software aplicação especifico, que lhe possibilita a comunicação com o servidor;</li>
+        <li>Utiliza recursos da rede.</li>
+    </ul>
+    <p>Pincipais características do servidor:</p>
+    <ul>
+        <li>Sempre espera por um pedido de um cliente;</li>
+        <li>Atende os pedidos e, em seguida, responde aos clientes com os dados solicitados;</li>
+        <li>Podem se conectar com outros servidores para atender uma solicitação específica do cliente; jamais podem se comunicar;</li>
+        <li>Fornece recursos de rede;</li>
+        <li>Normalmente interage diretamente com os usuários finais através de qualquer interface com o usuário;</li>
+        <li>Estrutura o sistema.</li>
+    </ul>
+    <p>Na maioria dos casos, a arquitetura cliente-servidor permite que os papéis e responsabilidades de um sistema de computação possam ser distribuídos entre vários computadores independentes que são conhecidos por si só através de uma rede. Isso cria uma vantagem adicional para essa arquitetura: maior facilidade de manutenção.</p>
+    <p>Todos os dados são armazenados nos servidores, que geralmente possuem controles de segurança muito maiores do que a maioria dos clientes. Os servidores podem controlar melhor o acesso a recursos, para garantir que apenas os clientes com credenciais válidas possam aceder e alterar os dados. Como o armazenamento de dados é centralizado, as atualizações dos dados são muito mais fáceis de administrar em comparação com o paradigma P2P. Em uma arquitetura P2P, atualizações de dados podem precisar ser distribuídas e aplicadas a cada nó na rede, o que consome tempo e é passível de erro, já que pode haver milhares ou mesmo milhões de nós;</p>
+    <p>Muitas tecnologias avançadas de cliente-servidor estão disponíveis e foram projetadas para garantir a segurança, facilidade de interface do usuário e facilidade de uso.</p>
+    <p>Uma das desvantagens desse modelo é que clientes podem solicitar serviços, mas não podem oferecê-los para outros clientes, sobrecarregando o servidor, pois quanto mais clientes e mais informações, maior a demanda de banda. Com isso, um servidor poderá ficar sobrecarregado caso receba mais solicitações simultâneas dos clientes do que pode suportar. Este modelo não possui a robustez de uma rede baseada em P2P.</P>
+    <p>Na arquitetura cliente-servidor, se um servidor crítico falha, os pedidos dos clientes não poderão ser cumpridos. Já nas redes P2P, os recursos são normalmente distribuídos entre vários nós. Mesmo se uma ou mais máquinas falharem no momento de download de um arquivo, por exemplo, as demais ainda terão os dados necessários para completar a referida operação.</p>
+    <h3>Como o TCP IP atua na conexão Cliente-Servidor</h3>
+    <p>Tendo compreendido a diferença entre cliente e servidor, a próxima questão a ser respondida é como se dá a transmissão de dados entre eles.</p>
+    <p>Vamos supor que você deseje fazer o download de uma imagem. Caso houvesse uma tentativa de transmitir essa imagem de um só vez, de forma integral, haveria um congestionamento na rede. Para evitar esse problema, o IP identifica o ponto A e o ponto B, que irão se comunicar entre si, e o TCP quebra essa imagem (ou qualquer outro tipo de dado) em vários pacotes menores, e esses pacotes são enviados completamente fora de ordem, pelos mais diversos caminhos. Ou seja, quando fazemos um download de um arquivo, ele não vem inteiro, mas vem fragmentado e fora de ordem, cada pacote segue uma rota diferente, e se acontece de um desses pacotes de perder, ele será reenviado. O importante é que no final da transmissão, todos os pacotes que compões o arquivo solicitado estejam no seu computador, onde ele será remontado pelo TCP do seu computador. Portanto o TCP do servidor quebra o arquivo para facilitar o envio, e quando todas as "peças" estão na máquina que fez a solicitação, o TCP do cliente realizava a remontagem.</p>
+    <p>Para compreender melhor esse processo, assista ao documentário "How does the internet work?" <a href="https://www.youtube.com/watch?v=TNQsmPf24go" target="_blank" rel="clicando aqui"></a>.</p>
+    <h3>Como era a internet antigamente?</h3>
+    <p>A princípio, a internet não tinha nenhum recurso gráfico. Era basicamente uma tela preta com letras verdes</p>
+    <img src="imagens/internetantigamente.jpeg" alt="internet antigamente">
+    <p>Nessa época, o protocolo utilizado era chamado "gopher". Não havia o ouso de mouse, ou seja, a navegação era feita através de linha de comando e do uso das setas. Já existia imagens, mas elas não era exibidas no navegador, você precisava fazer o download para conseguir visualizá-las no ambiente gráfico da sua máquina.</p>
+    <img src="imagens/gopherpedia.jpg" alt="gopherpedia">
+    <p>Havia também algumas palavra que ficavam destacadas, você poderia usar as setas do seu teclado selecioná-las e ser encaminhado para uma outra página.</p>
+    <h3>A revolução do HTTP e HTML</h3>
+    <p>Em 1993, a internet estava prestes a viver uma grande transformação. Neste ano, em genebra, Tim Berners-Lee estava particpando de um projeto parecido com o gopher, e eles passou a chamar esses termos que poderia ser clicados e que te enviariam para outra página de hyperlinks (ou links). Ele evoluiu muito essa tecnologia até chegar a um novo protocolo que seria incluído no TCP IP. O nome do protocolo criada por ele foi o HTTP ("hyper text transfer protocol" - protocolo de transferência de hipertexto), que é utilizado até hoje</p>
+    <img src="imagens/TIM-BERNERS-LEE.jpg" alt="foto Tim Berners-Lee"; title="Tim Berners-Lee">
+    <p>Além da criação desse protocolo, ele também foi responsável pela criação da linguagem HTML ("hypertext Markeup Language" - linguagem de marcação de hipertexto), que aliás, foi a base utilizada para a criação do protocolo HTTP.</p>
+    <p>Essas duas invenções basicamente deram origem a internet que conhecemos hoje. Aliás, esse formato que utilizamos de forma corrente não abrange toda a internet, mas é uma parte dela, que também foi nomeada pelo Tim Berners-Lee. Quando navegamos em páginas que utilizavam o protocolo HTTP e construídas utilizando HTML, estamos na world wide web ("www" - rede de alcance mundial).</p>
+    <p>Outro elemento que precisou ser criado para que toda essa engrenagem funcionasse, foi um navegador compatível com o protocolo HTTP. E o primeiro navegador criado foi o Mosaic, criado por Mark Andreessen.</p>
+    <img src="imagens/mark-andreessen.jpg" alt="foto mark andreessen"; title="Mark Andreessen">
+    <h3>A hierarquia da Internet</h3>
+    <p>Erroneamente alguns consideram que a world wide web seja sinônimo da internet, o que não é verdade. Mas então como funciona essa organização?</p>
+    <p>Conforme foi dito anteriormente a Internet é a conexão de várias redes diferentes a nível mundial. Dentro dela temos um conjunto de servidores especializados em determinado tipo de serviço ou protocolo.Por exemplo:</p>
+    <ul>
+        <li>Servidores FTP - especializados em transferência de arquivos;</li>
+        <li>Gopher - era especializado na transferência de hipertextos simples;</li>
+        <li>SMTP; POP3; IMAP - são protocolos de transferência, especializados em e-mails;</li>
+        <li>HTTP - explicado anteriormente;</li>
+    </ul>
+    <p>A world wide web é uma subrede da internet, especialida no protocolo HTTP, ou seja, uma rede que engloba todos os servidores HTTP. E claro que essas redes baseadas em servidores diferentes podem se comunicar entre si, afinal, essa foi a proposta da criação da internet desde o começo. Um exemplo disso, é como usamos uma página de protocolo http para termos acesso ao nosso e-mail.</p>/
 
 </body>
 </html>
